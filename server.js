@@ -5,7 +5,7 @@ const app = express();
 const UserRouter = require('./routes/users');
 const PlannerRouter = require('./routes/planner');
 
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 const connectionString = "mongodb+srv://flutter_hackathon:hello@1234@flutterhackathon-cqmco.mongodb.net/pandemicHealer?retryWrites=true&w=majority";
 
 app.use(express.urlencoded({extended:true}));
