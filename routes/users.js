@@ -49,10 +49,11 @@ router.post('/getbymail', async(req, res) => {
     let email = req.body.email;
 
     try {
-        const users = await userSchema.findOne({email:email})
+        const users = await userSchema.findOne({email:email});
+        console.log(users)
         if(users){
             res.status(200).json({
-                message:success,
+                message:"success",
                 content:users
             })
         } else {
