@@ -51,10 +51,10 @@ router.post('/getbyemail', async(req, res) => {
     let email = req.body.email;
 
     try {
-        const user = await userSchema.findOne({email:email})
+        const users = await userSchema.findOne({email:email})
         res.status(200).json({
             message:success,
-            content:user
+            content:users
         })
     } catch (error) {
         res.status(400).send('error-occurred')
