@@ -38,7 +38,7 @@ router.post('/login', async(req, res) => {
     try {
         const user = await userSchema.findOne({email:email});
         if(user){
-            if(bcrypt.compareSync(password, user.password)) {res.status(200).send('success')} else {res.status(200).send("failed")} 
+            if(bcrypt.compareSync(user.password, password)) {res.status(200).send('success')} else {res.status(200).send("failed")} 
         } else {
             res.status(200).send('not-registered');
         }
