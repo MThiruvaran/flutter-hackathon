@@ -45,7 +45,7 @@ router.post('/login', async(req, res) => {
     }
 })
 
-router.post('/getbyemail', async(req, res) => {
+router.post('/getbymail', async(req, res) => {
     let email = req.body.email;
 
     try {
