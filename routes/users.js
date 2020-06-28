@@ -23,11 +23,11 @@ router.post('/create', async(req, res) => {
             const created = await newUser.save();
             res.status(200).json({
                 message:"success",
-                ccontent:created
+                content:created
             })
         }
     } catch (error) {
-        res.status(400).send('error-occured');
+        res.status(400).send('error-occurred');
     }
 })
 
@@ -43,7 +43,21 @@ router.post('/login', async(req, res) => {
             res.status(200).send('not-registered');
         }
     } catch (error) {
-        res.status(400).send('error-occured');
+        res.status(400).send('error-occurred');
+    }
+})
+
+router.post('/getbyemail', async(req, res) => {
+    let email = req.body.email;
+
+    try {
+        const user = await userSchema.findOne({email:email})
+        res.status(200).json({
+            message:success,
+            content:user
+        })
+    } catch (error) {
+        res.status(400).send('error-occurred')
     }
 })
 
