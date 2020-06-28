@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const salt  = 5;
 
 router.post('/create', async(req, res) => {
-    let name = req.body.name;
     let email = req.body.email;
     let password = bcrypt.hashSync(req.body.password, salt);
 
@@ -15,7 +14,6 @@ router.post('/create', async(req, res) => {
             res.status(200).send('already-exist');
         } else {
             const newUser = new userSchema({
-                name:name,
                 email:email,
                 password:password
             })
@@ -52,10 +50,15 @@ router.post('/getbyemail', async(req, res) => {
 
     try {
         const users = await userSchema.findOne({email:email})
-        res.status(200).json({
-            message:success,
-            content:users
-        })
+        if(users){
+            res.status(200).json({
+                message:success,
+                content:users
+            })
+        } else {
+            res.status(200).send('not-a-user')
+        }
+        
     } catch (error) {
         res.status(400).send('error-occurred')
     }
