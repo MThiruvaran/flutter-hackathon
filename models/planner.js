@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { model } = require('./users');
+
 mongoose.set('useCreateIndex', true)
 
 

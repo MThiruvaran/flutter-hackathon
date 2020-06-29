@@ -11,7 +11,7 @@ router.post('/create', async(req, res) => {
     try{
         const newTask = new PlannerSchema({
             email:email,
-            task:task,
+            task:task
         })
 
         await newTask.save();
@@ -30,7 +30,7 @@ router.post('/get', async(req, res) => {
         const tasks = PlannerSchema.find({email:email})
         if(tasks){
             res.status(200).json({
-                message:success,
+                message:"success",
                 content:tasks
             })
         } else {
