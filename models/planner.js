@@ -4,11 +4,6 @@ mongoose.set('useCreateIndex', true)
 
 
 const plannerSchema = mongoose.Schema({
-    taskid:{
-        type:String,
-        required:true,
-        unique:true
-    },
     email:{
         type:String,
         required:true
@@ -16,9 +11,6 @@ const plannerSchema = mongoose.Schema({
     task:{
         type:String,
         required:true
-    },
-    date:{
-        type:Date
     },
     createdat:{
         type:Date,
